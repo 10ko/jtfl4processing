@@ -1,4 +1,1 @@
-jtfl4processing
-===============
-
-A Processing Parser for the Transport For London API
+JTFL is a Processing library for parsing the result from the (T)ransport (F)or (L)ondon APIs.
