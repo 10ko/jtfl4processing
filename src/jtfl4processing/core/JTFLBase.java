@@ -9,7 +9,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.zip.GZIPInputStream;
 
-public abstract class JTFLBasicAPI{
+public abstract class JTFLBase{
 
 	public static String[] loadStrings(String filename) {
 	    InputStream is = createInput(filename);
