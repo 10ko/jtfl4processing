@@ -34,7 +34,7 @@ package jtfl4processing.core.impl.bus.instant;
 import java.util.List;
 
 import jtfl4processing.core.JTFLBusAPI;
-import jtfl4processing.core.impl.bus.model.BusPrediction;
+import jtfl4processing.core.impl.bus.model.BusStopPrediction;
 
 
 // TODO: Not implemented yet. You need permission from TFL to use those APIs.
@@ -44,7 +44,7 @@ public class BusStreamAPI implements JTFLBusAPI {
 	 * @see jtfl4processing.core.JTFLBusAPI#getBusPrevisionList(java.lang.Long)
 	 */
 	@Override
-	public List<BusPrediction> getBusPrevisionList(Long stopId)
+	public List<BusStopPrediction> getBusPrevisionList(Long stopId)
 			throws Exception {
 		// TODO Auto-generated method stub
 		return null;
@@ -54,7 +54,7 @@ public class BusStreamAPI implements JTFLBusAPI {
 	 * @see jtfl4processing.core.JTFLBusAPI#getBusPrevisionList(java.lang.Long, java.lang.String[])
 	 */
 	@Override
-	public List<BusPrediction> getBusPrevisionList(Long stopId,
+	public List<BusStopPrediction> getBusPrevisionList(Long stopId,
 			String... params) {
 		// TODO Auto-generated method stub
 		return null;
@@ -64,7 +64,7 @@ public class BusStreamAPI implements JTFLBusAPI {
 	 * @see jtfl4processing.core.JTFLBusAPI#getBusPrevisionArray(java.lang.Long)
 	 */
 	@Override
-	public BusPrediction[] getBusPrevisionArray(Long stopId) throws Exception {
+	public BusStopPrediction[] getBusPrevisionArray(Long stopId) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -73,7 +73,7 @@ public class BusStreamAPI implements JTFLBusAPI {
 	 * @see jtfl4processing.core.JTFLBusAPI#getBusPrevisionArray(java.lang.Long, java.lang.String[])
 	 */
 	@Override
-	public BusPrediction[] getBusPrevisionArray(Long stopId, String... params) {
+	public BusStopPrediction[] getBusPrevisionArray(Long stopId, String... params) {
 		// TODO Auto-generated method stub
 		return null;
 	}

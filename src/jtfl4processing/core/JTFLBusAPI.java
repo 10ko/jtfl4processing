@@ -32,11 +32,11 @@
 
 package jtfl4processing.core;
 import java.util.List;
-import jtfl4processing.core.impl.bus.model.BusPrediction;
+import jtfl4processing.core.impl.bus.model.BusStopPrediction;
 
 public interface JTFLBusAPI {
-	public List<BusPrediction> getBusPrevisionList(Long stopId) throws Exception;
-	public List<BusPrediction> getBusPrevisionList(Long stopId, String... params);
-	public BusPrediction[] getBusPrevisionArray(Long stopId) throws Exception;
-	public BusPrediction[] getBusPrevisionArray(Long stopId, String... params);
+	public List<BusStopPrediction> getBusPrevisionList(Long stopId) throws Exception;
+	public List<BusStopPrediction> getBusPrevisionList(Long stopId, String... params);
+	public BusStopPrediction[] getBusPrevisionArray(Long stopId) throws Exception;
+	public BusStopPrediction[] getBusPrevisionArray(Long stopId, String... params);
 }
