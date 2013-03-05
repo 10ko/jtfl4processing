@@ -35,8 +35,38 @@ import java.util.List;
 import jtfl4processing.core.impl.bus.model.BusStopPrediction;
 
 public interface JTFLBusAPI {
-	public List<BusStopPrediction> getBusPrevisionList(Long stopId) throws Exception;
-	public List<BusStopPrediction> getBusPrevisionList(Long stopId, String... params);
-	public BusStopPrediction[] getBusPrevisionArray(Long stopId) throws Exception;
-	public BusStopPrediction[] getBusPrevisionArray(Long stopId, String... params);
+	/** 
+	 * @param stopId The id of the bus stop to lookup.
+	 * @return List<BusStopPrediction> The default BusStopPrediction map of attribute will contain only StopPointName,
+	 * LineName and EstimatedTime
+	 * @throws Exception
+	 */
+	public List<BusStopPrediction> getBusPrevisionList(String stopId) throws Exception;
+	
+	/**
+	 * @param stopId The id of the bus stop to lookup.
+	 * @param params The parameters we want to retrieve. Possible values are: ResponseType,StopPointName,
+	 * StopID,StopCode1,StopCode2,StopPointType,Towards,Bearing,StopPointIndicator,StopPointState,Latitude,
+	 * Longitude,VisitNumber,LineID,LineName,DirectionID,DestinationText,DestinationName,VehicleID,TripID,
+	 * RegistrationNumber,EstimatedTime,ExpireTime
+	 * @return List<BusStopPrediction> a list containing all the prediction for the stopId bus stop.
+	 */
+	public List<BusStopPrediction> getBusPrevisionList(String stopId, String... params);
+	
+	/**
+	 * @param stopId The id of the bus stop to lookup.
+	 * @return BusStopPrediction[] an array containing all the prediction for the stopId bus stop.
+	 * @throws Exception
+	 */
+	public BusStopPrediction[] getBusPrevisionArray(String stopId) throws Exception;
+	
+	/**
+	 * @param stopId The id of the bus stop to lookup.
+	 * @param params The parameters we want to retrieve. Possible values are: ResponseType,StopPointName,
+	 * StopID,StopCode1,StopCode2,StopPointType,Towards,Bearing,StopPointIndicator,StopPointState,Latitude,
+	 * Longitude,VisitNumber,LineID,LineName,DirectionID,DestinationText,DestinationName,VehicleID,TripID,
+	 * RegistrationNumber,EstimatedTime,ExpireTime
+	 * @return BusStopPrediction[] an array containing all the prediction for the stopId bus stop.
+	 */
+	public BusStopPrediction[] getBusPrevisionArray(String stopId, String... params);
 }

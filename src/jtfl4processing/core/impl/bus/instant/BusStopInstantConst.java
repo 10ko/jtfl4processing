@@ -33,7 +33,7 @@
 
 package jtfl4processing.core.impl.bus.instant;
 
-public class BusInstantConst {
+public class BusStopInstantConst {
 	public static final String BUS_INSTANT_BASE_URL = "http://countdown.api.tfl.gov.uk/interfaces/ura/instant_V1?";
 	
 	public static final String RESPONSE_TYPE = "ResponseType";

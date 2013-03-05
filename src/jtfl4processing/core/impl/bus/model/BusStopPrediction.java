@@ -33,50 +33,74 @@
 package jtfl4processing.core.impl.bus.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import jtfl4processing.core.impl.bus.instant.BusInstantConst;
+import jtfl4processing.core.impl.bus.instant.BusStopInstantConst;
 
 import com.google.gson.*;
 
 public class BusStopPrediction {
 	
-	private Long stopId;
+	private String stopId;
 	private Long timeStamp;
 	private HashMap<String, String> resultMap;
-		
+
 	// GETTERS AND SETTERS
-    public Long getResponseType(){ return Long.valueOf(resultMap.get(BusInstantConst.RESPONSE_TYPE)); }
-	public Long getStopId(){ return stopId; }
+    public Long getResponseType(){ return Long.valueOf(resultMap.get(BusStopInstantConst.RESPONSE_TYPE)); }
+	public String getStopId(){ return stopId; }
 	public Long getTimeStamp(){return timeStamp; }
-	public String getStopPointName(){ return resultMap.get(BusInstantConst.STOP_POINT_NAME); }
-	public String getStopCode1(){ return resultMap.get(BusInstantConst.STOP_CODE_1); }
-	public String getStopCode2(){ return resultMap.get(BusInstantConst.STOP_CODE_2); }
-	public String getStopPointState(){ return resultMap.get(BusInstantConst.STOP_POINT_STATE); }
-	public String getStopPointType(){ return resultMap.get(BusInstantConst.STOP_POINT_TYPE); }
-	public String getStopPointIndicator(){ return resultMap.get(BusInstantConst.STOP_POINT_INDICATOR); }
-	public String getTowards(){ return resultMap.get(BusInstantConst.TOWARDS); }
-	public Long getBearing(){ return Long.valueOf(resultMap.get(BusInstantConst.BEARING)); }
-	public String getLatitude(){ return resultMap.get(BusInstantConst.LATITUDE); }
-	public String valueOfitude(){ return resultMap.get(BusInstantConst.LONGITUDE); }
-	public Long getVisitNumber(){ return Long.valueOf(resultMap.get(BusInstantConst.VISIT_NUMBER)); }
-	public Long getTripId(){ return Long.valueOf(resultMap.get(BusInstantConst.TRIP_ID)); }
-	public String getVehicleId(){ return resultMap.get(BusInstantConst.VEHICLE_ID); }
-	public String getRegistrationNumber(){ return resultMap.get(BusInstantConst.REGISTRATION_NUMBER); }
-	public String getLineId(){ return resultMap.get(BusInstantConst.LINE_ID); }
-	public String getLineName(){ return resultMap.get(BusInstantConst.LINE_NAME); }
-	public String getDirectionId(){ return resultMap.get(BusInstantConst.DIRECTION_ID); }
-	public String getDestinationText(){	return resultMap.get(BusInstantConst.DESTINATION_TEXT);	}
-	public String getDestinationName(){	return resultMap.get(BusInstantConst.DESTINATION_NAME); }
-	public Long getEstimatedTime(){	return Long.valueOf(resultMap.get(BusInstantConst.ESTIMATED_TIME)); }
-	public Long getExpireTime(){ return Long.valueOf(resultMap.get(BusInstantConst.EXPIRE_TIME)); }
+	public String getStopPointName(){ return resultMap.get(BusStopInstantConst.STOP_POINT_NAME); }
+	public String getStopCode1(){ return resultMap.get(BusStopInstantConst.STOP_CODE_1); }
+	public String getStopCode2(){ return resultMap.get(BusStopInstantConst.STOP_CODE_2); }
+	public String getStopPointState(){ return resultMap.get(BusStopInstantConst.STOP_POINT_STATE); }
+	public String getStopPointType(){ return resultMap.get(BusStopInstantConst.STOP_POINT_TYPE); }
+	public String getStopPointIndicator(){ return resultMap.get(BusStopInstantConst.STOP_POINT_INDICATOR); }
+	public String getTowards(){ return resultMap.get(BusStopInstantConst.TOWARDS); }
+	public Long getBearing(){ return Long.valueOf(resultMap.get(BusStopInstantConst.BEARING)); }
+	public String getLatitude(){ return resultMap.get(BusStopInstantConst.LATITUDE); }
+	public String valueOfitude(){ return resultMap.get(BusStopInstantConst.LONGITUDE); }
+	public Long getVisitNumber(){ return Long.valueOf(resultMap.get(BusStopInstantConst.VISIT_NUMBER)); }
+	public Long getTripId(){ return Long.valueOf(resultMap.get(BusStopInstantConst.TRIP_ID)); }
+	public String getVehicleId(){ return resultMap.get(BusStopInstantConst.VEHICLE_ID); }
+	public String getRegistrationNumber(){ return resultMap.get(BusStopInstantConst.REGISTRATION_NUMBER); }
+	public String getLineId(){ return resultMap.get(BusStopInstantConst.LINE_ID); }
+	public String getLineName(){ return resultMap.get(BusStopInstantConst.LINE_NAME); }
+	public String getDirectionId(){ return resultMap.get(BusStopInstantConst.DIRECTION_ID); }
+	public String getDestinationText(){	return resultMap.get(BusStopInstantConst.DESTINATION_TEXT);	}
+	public String getDestinationName(){	return resultMap.get(BusStopInstantConst.DESTINATION_NAME); }
+	public Long getEstimatedTime(){	return Long.valueOf(resultMap.get(BusStopInstantConst.ESTIMATED_TIME)); }
+	public Long getExpireTime(){ return Long.valueOf(resultMap.get(BusStopInstantConst.EXPIRE_TIME)); }
+	
+	public Date getTimeStampDate(){
+		try{
+			return new Date(this.getTimeStamp());
+		}
+		catch(Exception e){ 
+			return null; 
+		}
+	}
+	public Date getEstimatedTimeDate(){
+		try {
+			return new Date(this.getEstimatedTime());
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	public Date getExpireTimeDate(){
+		try {
+			return new Date(this.getExpireTime());
+		} catch (Exception e) {
+			return null;
+		}
+	}
 	
 	public String toJson(){
 		return new Gson().toJson(this);
 	}
     
-	public BusStopPrediction(Long stopId, ArrayList<APIParam> paramList, String[] returnList, Long timeStamp) throws Exception{
+	public BusStopPrediction(String stopId, ArrayList<APIParam> paramList, String[] returnList, Long timeStamp) throws Exception{
 		
 		HashMap<String, String> resultMap = new HashMap<String, String>();
 		Iterator<APIParam> iter = paramList.iterator();
