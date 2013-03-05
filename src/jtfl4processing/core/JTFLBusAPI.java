@@ -41,7 +41,7 @@ public interface JTFLBusAPI {
 	 * LineName and EstimatedTime
 	 * @throws Exception
 	 */
-	public List<BusStopPrediction> getBusPrevisionList(String stopId) throws Exception;
+	public List<BusStopPrediction> getBusStopPredictionList(String stopId);
 	
 	/**
 	 * @param stopId The id of the bus stop to lookup.
@@ -51,14 +51,14 @@ public interface JTFLBusAPI {
 	 * RegistrationNumber,EstimatedTime,ExpireTime
 	 * @return List<BusStopPrediction> a list containing all the prediction for the stopId bus stop.
 	 */
-	public List<BusStopPrediction> getBusPrevisionList(String stopId, String... params);
+	public List<BusStopPrediction> getBusStopPredictionList(String stopId, String... params);
 	
 	/**
 	 * @param stopId The id of the bus stop to lookup.
 	 * @return BusStopPrediction[] an array containing all the prediction for the stopId bus stop.
 	 * @throws Exception
 	 */
-	public BusStopPrediction[] getBusPrevisionArray(String stopId) throws Exception;
+	public BusStopPrediction[] getBusStopPredictionArray(String stopId);
 	
 	/**
 	 * @param stopId The id of the bus stop to lookup.
@@ -68,5 +68,5 @@ public interface JTFLBusAPI {
 	 * RegistrationNumber,EstimatedTime,ExpireTime
 	 * @return BusStopPrediction[] an array containing all the prediction for the stopId bus stop.
 	 */
-	public BusStopPrediction[] getBusPrevisionArray(String stopId, String... params);
+	public BusStopPrediction[] getBusStopPredictionArray(String stopId, String... params);
 }

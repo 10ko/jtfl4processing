@@ -50,22 +50,31 @@ public class BusStopInstantAPI extends JTFLBase implements JTFLBusAPI{
 	/* (non-Javadoc)
 	 * @see jtfl4processing.core.JTFLBusAPI#getBusPrevisionList(java.lang.Long)
 	 */
-	public List<BusStopPrediction> getBusPrevisionList(String stopId) throws Exception{
-		if(stopId != null && stopId != "")
-			return getBusPrevisionList(stopId, null);
-		else
-			throw new Exception("Error, cant't process the request without specifing a stopId!");
-		
+	public List<BusStopPrediction> getBusStopPredictionList(String stopId){
+		try{
+			if(stopId != null && stopId != "")
+				return getBusStopPredictionList(stopId, null);
+			else
+				throw new Exception("Error, cant't process the request without specifing a stopId!");
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 	/* (non-Javadoc)
 	 * @see jtfl4processing.core.JTFLBusAPI#getBusPrevisionArray(java.lang.Long)
 	 */
-	public BusStopPrediction[] getBusPrevisionArray(String stopId) throws Exception{
+	public BusStopPrediction[] getBusStopPredictionArray(String stopId){
+		try{
 		if(stopId != null && stopId != "")
-			return getBusPrevisionArray(stopId, null);
+			return getBusStopPredictionArray(stopId, null);
 		else
 			throw new Exception("Error, cant't process the request without specifing a stopId!");
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	
@@ -73,7 +82,7 @@ public class BusStopInstantAPI extends JTFLBase implements JTFLBusAPI{
 	/* (non-Javadoc)
 	 * @see jtfl4processing.core.JTFLBusAPI#getBusPrevisionList(java.lang.Long, java.lang.String[])
 	 */
-	public List<BusStopPrediction> getBusPrevisionList(String stopId, String... params){
+	public List<BusStopPrediction> getBusStopPredictionList(String stopId, String... params){
 		
 		StringBuilder url = new StringBuilder(BusStopInstantConst.BUS_INSTANT_BASE_URL + "StopId=" + stopId + "&ReturnList=");
 		Collection<APIParam> apiParams = new ArrayList<APIParam>();
@@ -184,7 +193,7 @@ public class BusStopInstantAPI extends JTFLBase implements JTFLBusAPI{
 		}
 		try {
 			List<BusStopPrediction> result = new ArrayList<BusStopPrediction>();
-			String responseArr[] = loadStrings(url.toString());
+			String responseArr[] = this.loadStrings(url.toString());
 			Long timeStamp = null;
 			for(String response : responseArr){
 				response = response.replace("[","").replace("]","").replace("\"", "");
@@ -207,9 +216,9 @@ public class BusStopInstantAPI extends JTFLBase implements JTFLBusAPI{
 	/* (non-Javadoc)
 	 * @see jtfl4processing.core.JTFLBusAPI#getBusPrevisionArray(java.lang.Long, java.lang.String[])
 	 */
-	public BusStopPrediction[] getBusPrevisionArray(String stopId, String... params){
+	public BusStopPrediction[] getBusStopPredictionArray(String stopId, String... params){
 		try{
-			List<BusStopPrediction> returnList = getBusPrevisionList(stopId, params); 
+			List<BusStopPrediction> returnList = getBusStopPredictionList(stopId, params); 
 			if(returnList != null && returnList.size() > 0){
 				BusStopPrediction[] retArr = new BusStopPrediction[returnList.size()];
 				System.arraycopy(returnList.toArray(), 0, retArr, 0, returnList.size());
