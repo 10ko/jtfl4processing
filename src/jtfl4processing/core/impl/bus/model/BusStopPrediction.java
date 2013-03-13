@@ -33,6 +33,7 @@
 package jtfl4processing.core.impl.bus.model;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -41,7 +42,7 @@ import jtfl4processing.core.impl.bus.instant.BusStopInstantConst;
 
 import com.google.gson.*;
 
-public class BusStopPrediction {
+public class BusStopPrediction implements Comparable<BusStopPrediction>{
 	
 	private String stopId;
 	private Long timeStamp;
@@ -121,5 +122,11 @@ public class BusStopPrediction {
 	}
 	public BusStopPrediction() {
 		super();
-	}    
+	}
+	
+	@Override
+	public int compareTo(BusStopPrediction o) {
+		return (int)(this.getEstimatedTime() - o.getEstimatedTime());
+	}
+	 
 }
