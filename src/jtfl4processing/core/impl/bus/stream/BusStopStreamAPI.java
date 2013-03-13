@@ -36,8 +36,11 @@ import java.util.List;
 import jtfl4processing.core.JTFLBusAPI;
 import jtfl4processing.core.impl.bus.model.BusStopPrediction;
 
-
-// TODO: Not implemented yet. You need permission from TFL to use those APIs.
+/**
+ * Not implemented yet. You need permission from TFL to use those APIs.
+ * @author tenko
+ *
+ */
 public class BusStopStreamAPI implements JTFLBusAPI {
 
 	/* (non-Javadoc)

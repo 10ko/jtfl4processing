@@ -48,7 +48,6 @@ public class BusStopPrediction implements Comparable<BusStopPrediction>{
 	private Long timeStamp;
 	private HashMap<String, String> resultMap;
 
-	// GETTERS AND SETTERS
     public Long getResponseType(){ return Long.valueOf(resultMap.get(BusStopInstantConst.RESPONSE_TYPE)); }
 	public String getStopId(){ return stopId; }
 	public Long getTimeStamp(){return timeStamp; }

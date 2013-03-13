@@ -42,10 +42,23 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.zip.GZIPInputStream;
 
+/**
+ * Contains utility methods used by the JTFL implementations.
+ * Eg. the methods to call the APIs.
+ * @author tenko
+ *
+ */
 public abstract class JTFLBase{
 
-	public static String[] loadStrings(String filename) {
-	    InputStream is = createInput(filename);
+	
+	/**
+	 * The method to retrieve the response from the TFL APIs.
+	 * Amended from Processing PApplet.java 
+	 * @param url  TFL API url 
+	 * @return returns an array of String containing the response, one line per element.
+	 */
+	public static String[] loadStrings(String url) {
+	    InputStream is = createInput(url);
 	    if (is != null) return loadStrings(is);
 			return null;
 	}
@@ -74,9 +87,6 @@ public abstract class JTFLBase{
 		    return input;
 		  }
 
-	  /**
-	   * Call openStream() without automatic gzip decompression.
-	   */
 	  private static InputStream createInputRaw(String filename) {
 	    InputStream stream = null;
 
@@ -100,11 +110,7 @@ public abstract class JTFLBase{
 	        // not a url, that's fine
 
 	      } catch (FileNotFoundException fnfe) {
-	        // Java 1.5 likes to throw this when URL not available. (fix for 0119)
-	        // http://dev.processing.org/bugs/show_bug.cgi?id=403
-
 	      } catch (IOException e) {
-	        // changed for 0117, shouldn't be throwing exception
 	        e.printStackTrace();
 	        //System.err.println("Error downloading from URL " + filename);
 	        return null;

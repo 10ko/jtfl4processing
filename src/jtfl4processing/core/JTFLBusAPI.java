@@ -34,8 +34,18 @@ package jtfl4processing.core;
 import java.util.List;
 import jtfl4processing.core.impl.bus.model.BusStopPrediction;
 
+/**
+ * The main interface for the bus stop APIs.
+ * @author tenko
+ *
+ * @see jtfl4processing.core.impl.bus.instant.BusStopInstantAPI
+ * @see jtfl4processing.core.impl.bus.stream.BusStopStreamAPI
+ */
 public interface JTFLBusAPI {
 	/** 
+	 * Returns a List of BusStopPrediction containing all the predictions for the bus stop specified by the parameter <b>stopId</b>
+	 * The default map of value returned will contain only StopPointName,LineName and EstimatedTime
+	 * 
 	 * @param stopId The id of the bus stop to lookup.
 	 * @return List<BusStopPrediction> The default BusStopPrediction map of attribute will contain only StopPointName,
 	 * LineName and EstimatedTime
@@ -43,7 +53,9 @@ public interface JTFLBusAPI {
 	 */
 	public List<BusStopPrediction> getBusStopPredictionList(String stopId);
 	
-	/**
+	/** 
+	 * Returns a List of BusStopPrediction containing all the predictions for the bus stop specified by the parameter <b>stopId</b>
+	 * The value map for each prediction will contain the attribute specified by <b>params</b>
 	 * @param stopId The id of the bus stop to lookup.
 	 * @param params The parameters we want to retrieve. Possible values are: ResponseType,StopPointName,
 	 * StopID,StopCode1,StopCode2,StopPointType,Towards,Bearing,StopPointIndicator,StopPointState,Latitude,
@@ -54,6 +66,8 @@ public interface JTFLBusAPI {
 	public List<BusStopPrediction> getBusStopPredictionList(String stopId, String... params);
 	
 	/**
+	 * Returns an array of BusStopPrediction containing all the predictions for the bus stop specified by the parameter <b>stopId</b>
+	 * The default map of value returned will contain only StopPointName,LineName and EstimatedTime
 	 * @param stopId The id of the bus stop to lookup.
 	 * @return BusStopPrediction[] an array containing all the prediction for the stopId bus stop.
 	 * @throws Exception
@@ -61,6 +75,8 @@ public interface JTFLBusAPI {
 	public BusStopPrediction[] getBusStopPredictionArray(String stopId);
 	
 	/**
+	 * Returns an array of BusStopPrediction containing all the predictions for the bus stop specified by the parameter <b>stopId</b>
+	 * The value map for each prediction will contain the attribute specified by <b>params</b>
 	 * @param stopId The id of the bus stop to lookup.
 	 * @param params The parameters we want to retrieve. Possible values are: ResponseType,StopPointName,
 	 * StopID,StopCode1,StopCode2,StopPointType,Towards,Bearing,StopPointIndicator,StopPointState,Latitude,
