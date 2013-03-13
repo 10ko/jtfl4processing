@@ -1,6 +1,6 @@
 JTFL is a Processing library for parsing the result from the (T)ransport (F)or (L)ondon APIs.
 
-Right now it does support only the Bus Stop Instant Prediction functionality.
+Right now it only supports the Bus Stop Instant Prediction functionality.
 
 There's an example under examples/KingsCrossStationStopInfo 
 
