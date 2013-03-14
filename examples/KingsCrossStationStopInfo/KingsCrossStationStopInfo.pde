@@ -1,8 +1,8 @@
 /*
-* This is an example to show one of the possible application of the jtfl4processing library.
+* This is an example showing one of the possible application of the jtfl4processing library.
 * It simulates the bus arrivals panel you can find at
 * http://www.tfl.gov.uk/tfl/gettingaround/maps/buses/tfl-bus-map/text/stopinfo.aspx?s=183
-* that shows the arrival information for the King's Cross Station Bus Stop.
+* that displays the arrival information for the King's Cross Station Bus Stop.
 *
 * Author: Emanuele tenko Libralato
 *
