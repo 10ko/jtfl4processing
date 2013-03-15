@@ -59,4 +59,51 @@ public class BusStopInstantConst {
 	public static final String REGISTRATION_NUMBER = "RegistrationNumber";
 	public static final String ESTIMATED_TIME = "EstimatedTime";
 	public static final String EXPIRE_TIME = "ExpireTime";
+	
+
+	public enum StopInstantParams{
+		RESPONSE_TYPE("ResponseType",0),
+		STOP_POINT_NAME("StopPointName",1),
+		STOP_ID("StopID",2),
+		STOP_CODE_1("StopCode1",3),
+		STOP_CODE_2("StopCode2",4),
+		STOP_POINT_TYPE("StopPointType",5),
+		TOWARDS("Towards",6),
+		BEARING("Bearing",7),
+		STOP_POINT_INDICATOR("StopPointIndicator",8),
+		STOP_POINT_STATE("StopPointState",9),
+		LATITUDE("Latitude",10),
+		LONGITUDE("Longitude",11),
+		VISIT_NUMBER("VisitNumber",12),
+		LINE_ID("LineID",13),
+		LINE_NAME("LineName",14),
+		DIRECTION_ID("DirectionID",15),
+		DESTINATION_TEXT("DestinationText",16),
+		DESTINATION_NAME("DestinationName",17),
+		VEHICLE_ID("VehicleID",18),
+		TRIP_ID("TripID",19),
+		REGISTRATION_NUMBER("RegistrationNumber",20),
+		ESTIMATED_TIME("EstimatedTime",21),
+		EXPIRE_TIME("ExpireTime",22);
+		
+		private String name;
+		private int position;
+		
+		public String getName() {
+			return name;
+		}
+		public int getPosition() {
+			return position;
+		}
+		private StopInstantParams(String name, int position){
+			this.name = name;
+			this.position = position;
+		}
+
+	
+	
+	
+	
+	}
+		
 }

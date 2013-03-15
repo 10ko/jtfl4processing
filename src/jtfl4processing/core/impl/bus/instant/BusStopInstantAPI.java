@@ -38,6 +38,8 @@ import java.util.List;
 
 import jtfl4processing.core.JTFLBase;
 import jtfl4processing.core.JTFLBusAPI;
+import jtfl4processing.core.impl.bus.instant.BusStopInstantConst;
+import jtfl4processing.core.impl.bus.instant.BusStopInstantConst.StopInstantParams;
 import jtfl4processing.core.impl.bus.model.APIParam;
 import jtfl4processing.core.impl.bus.model.BusStopPrediction;
 
@@ -86,114 +88,40 @@ public class BusStopInstantAPI extends JTFLBase implements JTFLBusAPI{
 		
 		StringBuilder url = new StringBuilder(BusStopInstantConst.BUS_INSTANT_BASE_URL + "StopId=" + stopId + "&ReturnList=");
 		Collection<APIParam> apiParams = new ArrayList<APIParam>();
-		apiParams.add(new APIParam(BusStopInstantConst.RESPONSE_TYPE, 0));
+		
+		//We always get the ResponseType back, hence is added by default to the apiParams.
+		apiParams.add(new APIParam(BusStopInstantConst.StopInstantParams.RESPONSE_TYPE.getName(), 
+				BusStopInstantConst.StopInstantParams.RESPONSE_TYPE.getPosition()));
+		
 		
 		if(params != null){
-			
-			//url.append(JTFLBusInstantConst.RESPONSE_TYPE + ",");
 			for(String urlParam : params){
-				urlParam=urlParam.toLowerCase();
-				if(urlParam.equals(BusStopInstantConst.STOP_POINT_NAME.toLowerCase())){
-					url.append(BusStopInstantConst.STOP_POINT_NAME + ",");
-					apiParams.add(new APIParam(BusStopInstantConst.STOP_POINT_NAME, 1));
-				}
-				else if(urlParam.equals(BusStopInstantConst.STOP_ID.toLowerCase())){
-					url.append(BusStopInstantConst.STOP_ID + ",");
-					apiParams.add(new APIParam(BusStopInstantConst.STOP_ID, 2));
-				}
-				else if(urlParam.equals(BusStopInstantConst.STOP_CODE_1.toLowerCase())){
-					url.append(BusStopInstantConst.STOP_CODE_1 + ",");
-					apiParams.add(new APIParam(BusStopInstantConst.STOP_CODE_1, 3));
-				}
-				else if(urlParam.equals(BusStopInstantConst.STOP_CODE_2.toLowerCase())){
-					url.append(BusStopInstantConst.STOP_CODE_2 + ",");
-					apiParams.add(new APIParam(BusStopInstantConst.STOP_CODE_2, 4));
-				}
-				else if(urlParam.equals(BusStopInstantConst.STOP_POINT_TYPE.toLowerCase())){
-					url.append(BusStopInstantConst.STOP_POINT_TYPE + ",");
-					apiParams.add(new APIParam(BusStopInstantConst.STOP_POINT_TYPE, 5));
-				}
-				else if(urlParam.equals(BusStopInstantConst.TOWARDS.toLowerCase())){
-					url.append(BusStopInstantConst.TOWARDS + ",");
-					apiParams.add(new APIParam(BusStopInstantConst.TOWARDS, 6));
-				}
-				else if(urlParam.equals(BusStopInstantConst.BEARING.toLowerCase())){
-					url.append(BusStopInstantConst.BEARING + ",");
-					apiParams.add(new APIParam(BusStopInstantConst.BEARING, 7));
-				}
-				else if(urlParam.equals(BusStopInstantConst.STOP_POINT_INDICATOR.toLowerCase())){
-					url.append(BusStopInstantConst.STOP_POINT_INDICATOR + ",");
-					apiParams.add(new APIParam(BusStopInstantConst.STOP_POINT_INDICATOR, 8));
-				}
-				else if(urlParam.equals(BusStopInstantConst.STOP_POINT_STATE.toLowerCase())){
-					url.append(BusStopInstantConst.STOP_POINT_STATE + ",");
-					apiParams.add(new APIParam(BusStopInstantConst.STOP_POINT_STATE, 9));
-				}
-				else if(urlParam.equals(BusStopInstantConst.LATITUDE.toLowerCase())){
-					url.append(BusStopInstantConst.LATITUDE + ",");
-					apiParams.add(new APIParam(BusStopInstantConst.LATITUDE, 10));
-				}
-				else if(urlParam.equals(BusStopInstantConst.LONGITUDE.toLowerCase())){
-					url.append(BusStopInstantConst.LONGITUDE + ",");
-					apiParams.add(new APIParam(BusStopInstantConst.LONGITUDE, 11));
-				}
-				else if(urlParam.equals(BusStopInstantConst.VISIT_NUMBER.toLowerCase())){
-					url.append(BusStopInstantConst.VISIT_NUMBER + ",");
-					apiParams.add(new APIParam(BusStopInstantConst.VISIT_NUMBER, 12));
-				}
-				else if(urlParam.equals(BusStopInstantConst.LINE_ID.toLowerCase())){
-					url.append(BusStopInstantConst.LINE_ID + ",");
-					apiParams.add(new APIParam(BusStopInstantConst.LINE_ID, 13));
-				}
-				else if(urlParam.equals(BusStopInstantConst.LINE_NAME.toLowerCase())){
-					url.append(BusStopInstantConst.LINE_NAME + ",");
-					apiParams.add(new APIParam(BusStopInstantConst.LINE_NAME, 14));
-				}
-				else if(urlParam.equals(BusStopInstantConst.DIRECTION_ID.toLowerCase())){
-					url.append(BusStopInstantConst.DIRECTION_ID + ",");
-					apiParams.add(new APIParam(BusStopInstantConst.DIRECTION_ID, 15));
-				}
-				else if(urlParam.equals(BusStopInstantConst.DESTINATION_TEXT.toLowerCase())){
-					url.append(BusStopInstantConst.DESTINATION_TEXT + ",");
-					apiParams.add(new APIParam(BusStopInstantConst.DESTINATION_TEXT, 16));
-				}
-				else if(urlParam.equals(BusStopInstantConst.DESTINATION_NAME.toLowerCase())){
-					url.append(BusStopInstantConst.DESTINATION_NAME + ",");
-					apiParams.add(new APIParam(BusStopInstantConst.DESTINATION_NAME, 17));
-				}
-				else if(urlParam.equals(BusStopInstantConst.VEHICLE_ID.toLowerCase())){
-					url.append(BusStopInstantConst.VEHICLE_ID + ",");
-					apiParams.add(new APIParam(BusStopInstantConst.VEHICLE_ID, 18));
-				}
-				else if(urlParam.equals(BusStopInstantConst.TRIP_ID.toLowerCase())){
-					url.append(BusStopInstantConst.TRIP_ID + ",");
-					apiParams.add(new APIParam(BusStopInstantConst.TRIP_ID, 19));
-				}
-				else if(urlParam.equals(BusStopInstantConst.REGISTRATION_NUMBER.toLowerCase())){
-					url.append(BusStopInstantConst.REGISTRATION_NUMBER + ",");
-					apiParams.add(new APIParam(BusStopInstantConst.REGISTRATION_NUMBER, 20));
-				}
-				else if(urlParam.equals(BusStopInstantConst.ESTIMATED_TIME.toLowerCase())){
-					url.append(BusStopInstantConst.ESTIMATED_TIME + ",");
-					apiParams.add(new APIParam(BusStopInstantConst.ESTIMATED_TIME, 21));
-				}
-				else if(urlParam.equals(BusStopInstantConst.EXPIRE_TIME.toLowerCase())){
-					url.append(BusStopInstantConst.EXPIRE_TIME + ",");
-					apiParams.add(new APIParam(BusStopInstantConst.EXPIRE_TIME, 22));
+				urlParam = urlParam.toLowerCase();
+				for(StopInstantParams sip : StopInstantParams.values()){
+					if(urlParam.equals(sip.getName().toLowerCase())){
+						url.append(sip.getName() + ",");
+						apiParams.add(new APIParam(sip.getName(), sip.getPosition()));
+					}
 				}
 			}
 		}
 		else{
-			url.append(BusStopInstantConst.STOP_POINT_NAME + ",");
-			apiParams.add(new APIParam(BusStopInstantConst.STOP_POINT_NAME, 1));
-			url.append(BusStopInstantConst.LINE_NAME + ",");
-			apiParams.add(new APIParam(BusStopInstantConst.LINE_NAME, 14));
-			url.append(BusStopInstantConst.ESTIMATED_TIME + ",");
-			apiParams.add(new APIParam(BusStopInstantConst.ESTIMATED_TIME, 21));
+			url.append(BusStopInstantConst.StopInstantParams.STOP_POINT_NAME.getName() + ",");
+			apiParams.add(new APIParam(BusStopInstantConst.StopInstantParams.STOP_POINT_NAME.getName(),
+					BusStopInstantConst.StopInstantParams.STOP_POINT_NAME.getPosition()));
+			url.append(BusStopInstantConst.StopInstantParams.LINE_NAME.getName() + ",");
+			apiParams.add(new APIParam(BusStopInstantConst.StopInstantParams.LINE_NAME.getName(),
+					BusStopInstantConst.StopInstantParams.LINE_NAME.getPosition()));
+			url.append(BusStopInstantConst.StopInstantParams.LINE_NAME.getName() + ",");
+			apiParams.add(new APIParam(BusStopInstantConst.StopInstantParams.LINE_NAME.getName(),
+					BusStopInstantConst.StopInstantParams.LINE_NAME.getPosition()));
+			url.append(BusStopInstantConst.StopInstantParams.ESTIMATED_TIME.getName() + ",");
+			apiParams.add(new APIParam(BusStopInstantConst.StopInstantParams.ESTIMATED_TIME.getName(),
+					BusStopInstantConst.StopInstantParams.ESTIMATED_TIME.getPosition()));
 		}
 		try {
 			List<BusStopPrediction> result = new ArrayList<BusStopPrediction>();
-			String responseArr[] = this.loadStrings(url.toString());
+			String responseArr[] = loadStrings(url.toString());
 			Long timeStamp = null;
 			for(String response : responseArr){
 				response = response.replace("[","").replace("]","").replace("\"", "");

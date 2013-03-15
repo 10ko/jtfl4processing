@@ -33,12 +33,11 @@
 package jtfl4processing.core.impl.bus.model;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import jtfl4processing.core.impl.bus.instant.BusStopInstantConst;
+import jtfl4processing.core.impl.bus.instant.BusStopInstantConst.StopInstantParams;
 
 import com.google.gson.*;
 
@@ -48,30 +47,30 @@ public class BusStopPrediction implements Comparable<BusStopPrediction>{
 	private Long timeStamp;
 	private HashMap<String, String> resultMap;
 
-    public Long getResponseType(){ return Long.valueOf(resultMap.get(BusStopInstantConst.RESPONSE_TYPE)); }
+    public Long getResponseType(){ return Long.valueOf(resultMap.get(StopInstantParams.RESPONSE_TYPE.getName())); }
 	public String getStopId(){ return stopId; }
 	public Long getTimeStamp(){return timeStamp; }
-	public String getStopPointName(){ return resultMap.get(BusStopInstantConst.STOP_POINT_NAME); }
-	public String getStopCode1(){ return resultMap.get(BusStopInstantConst.STOP_CODE_1); }
-	public String getStopCode2(){ return resultMap.get(BusStopInstantConst.STOP_CODE_2); }
-	public String getStopPointState(){ return resultMap.get(BusStopInstantConst.STOP_POINT_STATE); }
-	public String getStopPointType(){ return resultMap.get(BusStopInstantConst.STOP_POINT_TYPE); }
-	public String getStopPointIndicator(){ return resultMap.get(BusStopInstantConst.STOP_POINT_INDICATOR); }
-	public String getTowards(){ return resultMap.get(BusStopInstantConst.TOWARDS); }
-	public Long getBearing(){ return Long.valueOf(resultMap.get(BusStopInstantConst.BEARING)); }
-	public String getLatitude(){ return resultMap.get(BusStopInstantConst.LATITUDE); }
-	public String valueOfitude(){ return resultMap.get(BusStopInstantConst.LONGITUDE); }
-	public Long getVisitNumber(){ return Long.valueOf(resultMap.get(BusStopInstantConst.VISIT_NUMBER)); }
-	public Long getTripId(){ return Long.valueOf(resultMap.get(BusStopInstantConst.TRIP_ID)); }
-	public String getVehicleId(){ return resultMap.get(BusStopInstantConst.VEHICLE_ID); }
-	public String getRegistrationNumber(){ return resultMap.get(BusStopInstantConst.REGISTRATION_NUMBER); }
-	public String getLineId(){ return resultMap.get(BusStopInstantConst.LINE_ID); }
-	public String getLineName(){ return resultMap.get(BusStopInstantConst.LINE_NAME); }
-	public String getDirectionId(){ return resultMap.get(BusStopInstantConst.DIRECTION_ID); }
-	public String getDestinationText(){	return resultMap.get(BusStopInstantConst.DESTINATION_TEXT);	}
-	public String getDestinationName(){	return resultMap.get(BusStopInstantConst.DESTINATION_NAME); }
-	public Long getEstimatedTime(){	return Long.valueOf(resultMap.get(BusStopInstantConst.ESTIMATED_TIME)); }
-	public Long getExpireTime(){ return Long.valueOf(resultMap.get(BusStopInstantConst.EXPIRE_TIME)); }
+	public String getStopPointName(){ return resultMap.get(StopInstantParams.STOP_POINT_NAME.getName()); }
+	public String getStopCode1(){ return resultMap.get(StopInstantParams.STOP_CODE_1.getName()); }
+	public String getStopCode2(){ return resultMap.get(StopInstantParams.STOP_CODE_2.getName()); }
+	public String getStopPointState(){ return resultMap.get(StopInstantParams.STOP_POINT_STATE.getName()); }
+	public String getStopPointType(){ return resultMap.get(StopInstantParams.STOP_POINT_TYPE.getName()); }
+	public String getStopPointIndicator(){ return resultMap.get(StopInstantParams.STOP_POINT_INDICATOR.getName()); }
+	public String getTowards(){ return resultMap.get(StopInstantParams.TOWARDS.getName()); }
+	public Long getBearing(){ return Long.valueOf(resultMap.get(StopInstantParams.BEARING.getName())); }
+	public String getLatitude(){ return resultMap.get(StopInstantParams.LATITUDE.getName()); }
+	public String valueOfitude(){ return resultMap.get(StopInstantParams.LONGITUDE.getName()); }
+	public Long getVisitNumber(){ return Long.valueOf(resultMap.get(StopInstantParams.VISIT_NUMBER.getName())); }
+	public Long getTripId(){ return Long.valueOf(resultMap.get(StopInstantParams.TRIP_ID.getName())); }
+	public String getVehicleId(){ return resultMap.get(StopInstantParams.VEHICLE_ID.getName()); }
+	public String getRegistrationNumber(){ return resultMap.get(StopInstantParams.REGISTRATION_NUMBER.getName()); }
+	public String getLineId(){ return resultMap.get(StopInstantParams.LINE_ID.getName()); }
+	public String getLineName(){ return resultMap.get(StopInstantParams.LINE_NAME.getName()); }
+	public String getDirectionId(){ return resultMap.get(StopInstantParams.DIRECTION_ID.getName()); }
+	public String getDestinationText(){	return resultMap.get(StopInstantParams.DESTINATION_TEXT.getName());	}
+	public String getDestinationName(){	return resultMap.get(StopInstantParams.DESTINATION_NAME.getName()); }
+	public Long getEstimatedTime(){	return Long.valueOf(resultMap.get(StopInstantParams.ESTIMATED_TIME.getName())); }
+	public Long getExpireTime(){ return Long.valueOf(resultMap.get(StopInstantParams.EXPIRE_TIME.getName())); }
 	
 	public Date getTimeStampDate(){
 		try{
